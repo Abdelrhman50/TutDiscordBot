@@ -6,6 +6,6 @@ namespace TutDiscordBot.Discord.Entities
     {
         public string Token { get; set; }
 
-        public DiscordSocketConfig SocketConfig { get; set; }ً
+        public DiscordSocketConfig SocketConfig { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Discord.WebSocket;
+﻿using Discord;
+using Discord.WebSocket;
 
 namespace TutDiscordBot.Discord
 {
@@ -6,15 +7,15 @@ namespace TutDiscordBot.Discord
     {
         public static DiscordSocketConfig GetDefualt()
         {
-            return new DiscordSocketConfig();
+            return new DiscordSocketConfig()
+            {
+                LogLevel = LogSeverity.Verbose
+            };
         }
 
         public static DiscordSocketConfig Generete()
         {
-            return new DiscordSocketConfig()
-            {
-
-            };
+            return new DiscordSocketConfig();
         }
     }
 }
