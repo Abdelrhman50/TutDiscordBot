@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Threading;
-using System.Threading.Tasks;
-using TutDiscordBot.DataStorage;
+using TutDiscordBot.Discord;
+using TutDiscordBot.Discord.Entities;
 
 namespace TutDiscordBot
 {
@@ -9,7 +8,14 @@ namespace TutDiscordBot
     {
         static void Main(string[] args)
         {
+            Unity.RegisterType();
             Console.WriteLine("Hello World!");
+
+            var discordBotConfig = new BotConfig()
+            {
+                Token = "ABD",
+                SocketConfig = SocketConfig.GetDefualt()
+            };
 
         }
 
