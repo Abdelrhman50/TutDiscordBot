@@ -13,7 +13,7 @@ namespace TutDiscordBot.Discord
             };
         }
 
-        public static DiscordSocketConfig Generete()
+        public static DiscordSocketConfig GetNew()
         {
             return new DiscordSocketConfig();
         }

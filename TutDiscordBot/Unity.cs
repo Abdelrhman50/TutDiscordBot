@@ -1,8 +1,10 @@
 ﻿using System.Linq;
+using Discord.WebSocket;
 using TutDiscordBot.DataStorage;
 using TutDiscordBot.DataStorage.Implementations;
 using TutDiscordBot.Discord;
 using Unity;
+using Unity.Injection;
 using Unity.Lifetime;
 using Unity.Resolution;
 
@@ -27,11 +29,16 @@ namespace TutDiscordBot
         {
             _container= new UnityContainer();
 
-            _container.RegisterType<IDataStorage, InMemoryStorage>(new ContainerControlledLifetimeManager());
+            _container.RegisterSingleton<IDataStorage, InMemoryStorage>();
 
-            _container.RegisterType<ILogger, Logger>(new ContainerControlledLifetimeManager());
+            _container.RegisterSingleton<ILogger, Logger>();
 
-            _container.RegisterType<Discord.Connection>(new ContainerControlledLifetimeManager());
+            _container.RegisterType<DiscordSocketConfig>(new InjectionFactory(i => SocketConfig.GetDefualt()));
+
+            _container.RegisterSingleton<DiscordSocketClient>(new InjectionConstructor(typeof(DiscordSocketConfig)));
+
+            _container.RegisterSingleton<Connection>();
+            
         }
 
         public  static T Resolve<T>()
