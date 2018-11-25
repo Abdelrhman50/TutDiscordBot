@@ -17,6 +17,10 @@ namespace TutDiscordBot
                 SocketConfig = SocketConfig.GetDefualt()
             };
 
+            var connection = Unity.Resolve<Connection>();
+
+            Console.ReadKey();
+
         }
 
     }

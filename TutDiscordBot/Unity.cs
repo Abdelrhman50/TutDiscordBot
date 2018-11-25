@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using TutDiscordBot.DataStorage;
 using TutDiscordBot.DataStorage.Implementations;
+using TutDiscordBot.Discord;
 using Unity;
 using Unity.Lifetime;
 using Unity.Resolution;
@@ -29,6 +30,8 @@ namespace TutDiscordBot
             _container.RegisterType<IDataStorage, InMemoryStorage>(new ContainerControlledLifetimeManager());
 
             _container.RegisterType<ILogger, Logger>(new ContainerControlledLifetimeManager());
+
+            _container.RegisterType<Discord.Connection>(new ContainerControlledLifetimeManager());
         }
 
         public  static T Resolve<T>()
